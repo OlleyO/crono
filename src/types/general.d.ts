@@ -1,0 +1,1 @@
+type TIndexedObject<T = any> = Record<string, T>
