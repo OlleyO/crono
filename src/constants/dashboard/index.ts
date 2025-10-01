@@ -1,12 +1,13 @@
 import { createHashedObject } from "@/core/helpers"
 import type { PerformanceTypes } from "@/entities/performance"
 import type { TaskStatuses } from "@/entities/task"
-import type { SVGProps } from "react"
 
-import ContactIcon from '@/assets/images/icons/contact.svg?react'
-import BriefcaseIcon from '@/assets/images/icons/briefcase.svg?react'
-import TodoListIcon from '@/assets/images/icons/todo-list.svg?react'
-import CameraIcon from '@/assets/images/icons/camera.svg?react'
+import { type IconsNames } from "@/components/shared/Icon"
+
+// import ContactIcon from '@/assets/images/icons/contact.svg?react'
+// import BriefcaseIcon from '@/assets/images/icons/briefcase.svg?react'
+// import TodoListIcon from '@/assets/images/icons/todo-list.svg?react'
+// import CameraIcon from '@/assets/images/icons/camera.svg?react'
 
 interface DashboardTaskStatusUiConfig {
   label: string
@@ -55,7 +56,7 @@ interface DashboardPerformanceUiConfig {
   color: string
   progressColor: string
   barColor: string
-  icon?: React.FunctionComponent<SVGProps<SVGSVGElement>>
+  icon?: IconsNames
   prefix?: string
   infoTooltip?: string
 }
@@ -66,7 +67,7 @@ export const dashboardPerformances: DashboardPerformanceUiConfig[] = [
     color: 'text-blue-green',
     progressColor: 'bg-blue-green',
     barColor: 'bg-polar',
-    icon: ContactIcon,
+    icon: 'contact',
     infoTooltip: 'Contacts who have at least one logged activity within the current month',
     type: 'contacts'
   },
@@ -75,7 +76,7 @@ export const dashboardPerformances: DashboardPerformanceUiConfig[] = [
     color: 'text-royal-blue',
     progressColor: 'bg-royal-blue',
     barColor: 'bg-polar',
-    icon: BriefcaseIcon,
+    icon: 'briefcase',
     type: 'companies'
   },
   {
@@ -83,7 +84,7 @@ export const dashboardPerformances: DashboardPerformanceUiConfig[] = [
     color: 'text-medium-purple',
     progressColor: 'bg-medium-purple',
     barColor: 'bg-blue-chalk',
-    icon: TodoListIcon,
+    icon: 'todo-list',
     type: 'activities'
   },
   {
@@ -91,7 +92,7 @@ export const dashboardPerformances: DashboardPerformanceUiConfig[] = [
     color: 'text-gold-tips',
     progressColor: 'bg-gold-tips',
     barColor: 'bg-yellow-light',
-    icon: CameraIcon,
+    icon: 'camera',
     type: 'meetings'
   },
   {
@@ -99,7 +100,7 @@ export const dashboardPerformances: DashboardPerformanceUiConfig[] = [
     color: 'text-lavender-magenta',
     progressColor: 'bg-lavender-magenta',
     barColor: 'bg-remy',
-    icon: TodoListIcon,
+    icon: 'todo-list',
     type: 'deals'
   },
   {

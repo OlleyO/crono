@@ -1,23 +1,12 @@
-import { useState, type SVGProps } from 'react'
+import { useState } from 'react'
 import cn from 'classnames'
-
-import CronoLogoIcon from '@/assets/images/logo.svg?react'
-
-import DashboardIcon from '@/assets/images/icons/dashboard.svg?react'
-import FindNewIcon from '@/assets/images/icons/search.svg?react'
-import AddTemplateIcon from '@/assets/images/icons/add-template.svg?react'
-import BarGraphChartIcon from '@/assets/images/icons/bar-graph-chart.svg?react'
-import TodoListIcon from '@/assets/images/icons/todo-list.svg?react'
-import InboxIcon from '@/assets/images/icons/inbox.svg?react'
-import CoinStackIcon from '@/assets/images/icons/coin-stack.svg?react'
-import HistogramIcon from '@/assets/images/icons/histogram.svg?react'
-import DoubleChevronRightIcon from '@/assets/images/icons/double-chevron-right.svg?react'
 
 import { Link } from '@tanstack/react-router'
 import Badge from '@/components/shared/Badge'
+import Icon, { type IconsNames } from '@/components/shared/Icon'
 
 interface AsideMenuItemConfig {
-  icon: React.FunctionComponent<SVGProps<SVGSVGElement>>
+  icon: IconsNames
   label: string
   // TODO: Add type for the path
   path: string
@@ -33,37 +22,37 @@ export default function AsideMenu() {
   const menuItems: AsideMenuItemConfig[] = [
     {
       label: 'Dashboard',
-      icon: DashboardIcon,
+      icon: 'dashboard',
       path: '/dashboard',
     },
     {
       label: 'Find New',
-      icon: FindNewIcon,
+      icon: 'search',
       path: '/find-new',
     },
     {
       label: 'Lists',
-      icon: DashboardIcon,
+      icon: 'dashboard',
       path: '/lists',
     },
     {
       label: 'Templates',
-      icon: AddTemplateIcon,
+      icon: 'add-template',
       path: '/templates',
     },
     {
       label: 'Sequences',
-      icon: BarGraphChartIcon,
+      icon: 'bar-graph-chart',
       path: '/sequences',
     },
     {
       label: 'Tasks',
-      icon: TodoListIcon,
+      icon: 'todo-list',
       path: '/tasks',
     },
     {
       label: 'Inbox',
-      icon: InboxIcon,
+      icon: 'inbox',
       path: '/inbox',
       suffix: (
         <Badge
@@ -75,12 +64,12 @@ export default function AsideMenu() {
     },
     {
       label: 'Deals',
-      icon: CoinStackIcon,
+      icon: 'coin-stack',
       path: '/deals',
     },
     {
       label: 'Analytics',
-      icon: HistogramIcon,
+      icon: 'histogram',
       path: '/analytics',
     },
   ]
@@ -96,13 +85,13 @@ export default function AsideMenu() {
       )}
     >
       <div className="flex items-center justify-between pl-4 pr-2 py-6">
-        {isOpen ? <CronoLogoIcon /> : undefined}
+        {isOpen ? <Icon name="crono" /> : undefined}
 
         <button
           className="rounded-full flex items-center justify-center size-6 bg-gray-7"
           onClick={handleToggleMenu}
         >
-          <DoubleChevronRightIcon />
+          <Icon name="double-chevron-right" />
         </button>
       </div>
 
@@ -120,7 +109,7 @@ export default function AsideMenu() {
                 }}
               >
                 <span className="size-6">
-                  <item.icon />
+                  <Icon name={item.icon} />
                 </span>
 
                 {isOpen ? <span>{item.label}</span> : undefined}

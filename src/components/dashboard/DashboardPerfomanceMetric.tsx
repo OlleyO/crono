@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { dashboardPerformancesHashedByType } from '@/constants/dashboard'
 import type { PerformanceTypes } from '@/entities/performance'
 
-import InfoIcon from '@/assets/images/icons/info.svg?react'
+import Icon from '@/components/shared/Icon'
 
 interface DashboardPerformanceMetricProps {
   count: number
@@ -27,14 +27,14 @@ export default function DashboardPerformanceMetric({
         </div>
 
         {uiConfig.infoTooltip ? (
-          <InfoIcon className="text-gray-1" />
+          <Icon name="info" className="text-gray-1" />
         ) : undefined}
       </div>
 
       <div className="mt-2 flex items-center text-base font-medium">
         <div className={cn('flex items-center', uiConfig.color)}>
           {uiConfig.icon ? (
-            <uiConfig.icon className="mr-1 size-4" />
+            <Icon name={uiConfig.icon} className="mr-1 size-4" />
           ) : undefined}
           {uiConfig.prefix ? uiConfig.prefix : undefined}
           <div>{count}</div>

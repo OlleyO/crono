@@ -1,8 +1,7 @@
 import Card from '@/components/shared/Card'
 import { createFileRoute, Link } from '@tanstack/react-router'
 
-import InboxIcon from '@/assets/images/icons/inbox.svg?react'
-import PencilIcon from '@/assets/images/icons/pencil.svg?react'
+import Icon from '@/components/shared/Icon'
 
 import {
   dashboardPerformances,
@@ -101,7 +100,7 @@ function RouteComponent() {
         <div className="mt-2 p-4 bg-primary-light pr-6 rounded-xl flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="size-12 bg-primary-hover text-primary flex items-center justify-center rounded-full">
-              <InboxIcon />
+              <Icon name="inbox" />
             </div>
 
             <span className="text-4xl text-gray-hover-1 font-medium">24</span>
@@ -123,7 +122,7 @@ function RouteComponent() {
 
           <button className="flex items-center gap-2 text-primary text-sm font-medium">
             <span>Edit KPIs</span>
-            <PencilIcon />
+            <Icon name="pencil" />
           </button>
         </div>
 

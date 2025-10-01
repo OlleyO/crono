@@ -3,7 +3,7 @@ import cn from 'classnames'
 import type { TaskStatuses } from '@/entities/task'
 import { dashboardStatusesHashedByStatus } from '@/constants/dashboard'
 
-import WarningIcon from '@/assets/images/icons/warning.svg?react'
+import Icon from '@/components/shared/Icon'
 
 interface DashboardTaskStatusCardProps {
   count: number
@@ -29,7 +29,7 @@ export default function DashboardTaskStatusCard({
           <div className="relative flex items-center gap-1.5 bg-white text-hover-red px-2 py-1 rounded-2xl -top-2">
             <span className="text-xs font-medium">{errors} error</span>
 
-            <WarningIcon />
+            <Icon name="warning" />
           </div>
         ) : undefined}
       </div>
