@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --font-poppins: "Poppins", sans-serif;
+  --color-primary: #0A9B94;
+  --color-primary-light: #E9F8F8;
+  --color-primary-hover: #CEEDED;
+  --color-primary-bg: #F5F7F9;
+}
+
+@theme {
+  --color-gray-1: #7A8395;
+  --color-gray-2: #AFB5BF;
+  --color-gray-4: #E6E9F2;
+  --color-gray-5: #D5E0F0;
+  --color-gray-6: #EAF1FB;
+  --color-gray-7: var(--color-primary-bg);
+  --color-gray-hover-1: #3E485B;
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-yellow: #F9BB06;
+  --color-dark: #010E27;
+
+  --color-hover-red: #ED4C5E;
+  --color-fair-pink: #FFE9E9;
+  --color-dark-yellow: #C69812;
+  --color-yellow-light: #FEF3D2;
+  --color-blue-green: #3B85E8;
+  --color-hover-green: #1A9D6E;
+  --color-frost: #E8F5D9;
+  --color-royal-blue: #3B58DB;
+  --color-medium-purple: #8846DC;
+  --color-gold-tips: #E2AD13;
+  --color-lavender-magenta: #E769CB;
+  --color-polar: #EAF3FB;
+  --color-blue-chalk: #F2EAFF;
+  --color-remy: #FDE5F8;
+}
+
+* {
+  font-family: var(--font-poppins);
+}

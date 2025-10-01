@@ -1,0 +1,53 @@
+* {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+html,
+body,
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-primary-bg);
+}
+
+#app > * {
+  flex: 1 0 100%;
+}
+
+/* set z-index for dialogs and their overlays */
+div[data-state] {
+  z-index: 11;
+}
+
+html {
+  font-size: 16px;
+  line-height: normal;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg {
+  display: initial;
+}
+
+thead {
+  z-index: 0;
+}
+
+a:not(:disabled) {
+  cursor: pointer;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

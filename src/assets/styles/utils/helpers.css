@@ -1,0 +1,8 @@
+.multi-truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--mt-lines, 3);
+  -webkit-box-orient: vertical;
+  white-space: initial;
+  overflow: hidden;
+  word-break: break-word;
+}
