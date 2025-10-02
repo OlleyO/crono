@@ -52,10 +52,12 @@ button:disabled {
   cursor: not-allowed;
 }
 
-*::-webkit-scrollbar-track {
-  @apply bg-yellow;
+
+::-webkit-scrollbar {
+  @apply w-2;
 }
 
-*::-webkit-scrollbar-thumb {
-  @apply bg-yellow;
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-4 rounded-sm;
 }
+

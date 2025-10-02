@@ -5,6 +5,12 @@ import type { TaskStatuses } from "@/entities/task"
 import { type IconsNames } from "@/components/shared/Icon"
 import type { SignalTypes } from "@/entities/signal"
 
+import IntegrationSetupImage from '@/assets/images/integration-setup.png'
+import AddNewContactsImage from '@/assets/images/add-new-contacts.png'
+import TargetGoalImage from '@/assets/images/target-goal.png'
+import AddToStrategyImage from '@/assets/images/add-to-strategy.png'
+import RunTaskImage from '@/assets/images/run-task.png'
+
 interface DashboardTaskStatusUiConfig {
   label: string
   color: string
@@ -130,3 +136,37 @@ export const dashboardSignalsUiConfig: Record<SignalTypes,DashboardSignalsUiConf
   color: 'text-lavender-magenta'
  }
 }
+
+export interface DashboardOnboardingUiConfig {
+  label: string
+  image: string
+  completeTimeMins: number
+}
+
+export const dashboardOnboardingUiConfig: DashboardOnboardingUiConfig[] = [
+  {
+    label: 'Integration Setup',
+    image: IntegrationSetupImage,
+    completeTimeMins: 5
+  },
+  {
+    label: 'Add new Contact',
+    image: AddNewContactsImage,
+    completeTimeMins: 5
+  },
+  {
+    label: 'Create your first sequence',
+    image: TargetGoalImage,
+    completeTimeMins: 10
+  },
+  {
+    label: 'Add contacts to sequence',
+    image: AddToStrategyImage,
+    completeTimeMins: 5
+  },
+  {
+    label: 'Run your first task',
+    image: RunTaskImage,
+    completeTimeMins: 10
+  }
+]

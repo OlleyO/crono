@@ -19,7 +19,7 @@ export default function DashboardSignalCard({
   const uiConfig = dashboardSignalsUiConfig[type]
 
   return (
-    <div className="flex items-center justify-between px-4">
+    <div className="flex items-center justify-between px-4 py-4">
       <div className="flex items-center">
         <Avatar className="mr-4" />
 

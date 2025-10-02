@@ -90,7 +90,10 @@ export default function AsideMenu() {
         {isOpen ? <Icon name="crono" /> : undefined}
 
         <Button color="ghost" size="sm" icon onClick={handleToggleMenu}>
-          <Icon name="double-chevron-right" />
+          <Icon
+            name="double-chevron-right"
+            className={cn({ 'rotate-180': !isOpen })}
+          />
         </Button>
       </div>
 

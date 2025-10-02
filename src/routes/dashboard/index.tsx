@@ -4,6 +4,7 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import Icon from '@/components/shared/Icon'
 
 import {
+  dashboardOnboardingUiConfig,
   dashboardPerformances,
   dashboardStatusesGroupedByStatus,
 } from '@/constants/dashboard'
@@ -19,6 +20,7 @@ import { dashboardSignalsMock } from '@/mocks/dashboard-signals'
 import DashboardSignalCard from '@/components/dashboard/DashboardSignalCard'
 import Button from '@/components/shared/Button'
 import Avatar from '@/components/shared/Avatar'
+import DashboardOnboardingItem from '@/components/dashboard/DashboardOnboardingItem'
 
 export const Route = createFileRoute('/dashboard/')({
   component: RouteComponent,
@@ -39,25 +41,20 @@ function RouteComponent() {
     if (isArray(i)) {
       return i.map((subI) => {
         return (
-          <>
-            <div className="w-1 h-full border-l border-l-gray-4" />
-            <div className="flex-1">
-              <DashboardTaskStatusCard
-                key={subI.status}
-                status={subI.status}
-                count={hashedTaskStatusesMock[subI.status].count}
-                errors={hashedTaskStatusesMock[subI.status].errors}
-              />
-            </div>
-          </>
+          <div key={subI.status} className="flex-1">
+            <DashboardTaskStatusCard
+              status={subI.status}
+              count={hashedTaskStatusesMock[subI.status].count}
+              errors={hashedTaskStatusesMock[subI.status].errors}
+            />
+          </div>
         )
       })
     }
 
     return (
-      <div className="flex-1">
+      <div className="flex-1" key={i.status}>
         <DashboardTaskStatusCard
-          key={i.status}
           status={i.status}
           count={hashedTaskStatusesMock[i.status].count}
           errors={hashedTaskStatusesMock[i.status].errors}
@@ -80,17 +77,18 @@ function RouteComponent() {
 
   const signalsCards = dashboardSignalsMock.map((i) => {
     return (
-      <>
-        <div className="h-1 w-full border-b border-b-gray-4" />
-        <DashboardSignalCard
-          key={i.id}
-          date={i.date}
-          description={i.description}
-          sequenceActive={i.sequenceActive}
-          type={i.type}
-        />
-      </>
+      <DashboardSignalCard
+        key={i.id}
+        date={i.date}
+        description={i.description}
+        sequenceActive={i.sequenceActive}
+        type={i.type}
+      />
     )
+  })
+
+  const onboardingCards = dashboardOnboardingUiConfig.map((i) => {
+    return <DashboardOnboardingItem config={i} key={i.label} />
   })
 
   return (
@@ -168,13 +166,19 @@ function RouteComponent() {
           </p>
         </div>
 
-        <div className="flex flex-col overflow-auto flex-1 gap-4">
+        <div className="flex flex-col overflow-auto flex-1 divide-y divide-gray-5">
           {signalsCards}
         </div>
       </Card>
 
       {/* Onboarding block */}
-      <Card className="row-span-2">1</Card>
+      <Card className="row-span-2">
+        <h5 className="font-semibold text-sm">Onboarding</h5>
+
+        <div className="flex flex-col overflow-auto flex-1 divide-y divide-gray-5">
+          {onboardingCards}
+        </div>
+      </Card>
     </div>
   )
 }
