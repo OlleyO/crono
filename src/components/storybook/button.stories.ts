@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { fn } from 'storybook/test'
 
-import { Button } from './button'
+import { AppButton } from './button'
 
 const meta = {
-  title: 'Form/Button',
-  component: Button,
+  title: 'Form/AppButton',
+  component: AppButton,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   args: { onClick: fn() },
-} satisfies Meta<typeof Button>
+} satisfies Meta<typeof AppButton>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -19,14 +19,14 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    children: 'Primary Button',
+    children: 'Primary AppButton',
   },
 }
 
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
-    children: 'Secondary Button',
+    children: 'Secondary AppButton',
   },
 }
 
@@ -40,28 +40,28 @@ export const Danger: Story = {
 export const Small: Story = {
   args: {
     size: 'small',
-    children: 'Small Button',
+    children: 'Small AppButton',
   },
 }
 
 export const Medium: Story = {
   args: {
     size: 'medium',
-    children: 'Medium Button',
+    children: 'Medium AppButton',
   },
 }
 
 export const Large: Story = {
   args: {
     size: 'large',
-    children: 'Large Button',
+    children: 'Large AppButton',
   },
 }
 
 export const Disabled: Story = {
   args: {
     variant: 'primary',
-    children: 'Disabled Button',
+    children: 'Disabled AppButton',
     disabled: true,
   },
 }

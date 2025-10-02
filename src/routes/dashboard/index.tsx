@@ -1,5 +1,5 @@
 import Card from '@/components/shared/Card'
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 
 import Icon from '@/components/shared/Icon'
 
@@ -18,15 +18,23 @@ import { createHashedObject } from '@/core/helpers'
 import DashboardPerformanceMetric from '@/components/dashboard/DashboardPerfomanceMetric'
 import { dashboardSignalsMock } from '@/mocks/dashboard-signals'
 import DashboardSignalCard from '@/components/dashboard/DashboardSignalCard'
-import Button from '@/components/shared/Button'
+import AppButton from '@/components/shared/AppButton'
 import Avatar from '@/components/shared/Avatar'
 import DashboardOnboardingItem from '@/components/dashboard/DashboardOnboardingItem'
+import { dashboardInboxMock } from '@/mocks/dashboard-inbox'
+import { useState } from 'react'
 
 export const Route = createFileRoute('/dashboard/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const [unreadSignals, setUnreadSignals] = useState(dashboardSignalsMock)
+
+  function handleRemoveSignal(id: string) {
+    setUnreadSignals((prev) => prev.filter((signal) => signal.id !== id))
+  }
+
   const hashedTaskStatusesMock = createHashedObject(
     dashboardTaskStatusesMock,
     'status',
@@ -36,6 +44,13 @@ function RouteComponent() {
     dashboardPerformancesMock,
     'type',
   )
+
+  const unreadMessages = dashboardInboxMock.length
+  const shownUnreadLogos = dashboardInboxMock.slice(0, 4)
+
+  const unreadLogosAvatars = shownUnreadLogos.map((i) => {
+    return <Avatar key={i.image} src={i.image} />
+  })
 
   const taskStatusCards = dashboardStatusesGroupedByStatus.flatMap((i) => {
     if (isArray(i)) {
@@ -75,14 +90,17 @@ function RouteComponent() {
     )
   })
 
-  const signalsCards = dashboardSignalsMock.map((i) => {
+  const signalsCards = unreadSignals.map((i) => {
     return (
       <DashboardSignalCard
+        id={i.id}
         key={i.id}
         date={i.date}
         description={i.description}
         sequenceActive={i.sequenceActive}
         type={i.type}
+        image={i.image}
+        onRemove={handleRemoveSignal}
       />
     )
   })
@@ -109,10 +127,10 @@ function RouteComponent() {
         <div className="flex items-center justify-between text-sm">
           <h5 className="font-semibold">Replies</h5>
 
-          <Button variant="link" to="/inbox">
+          <AppButton variant="link" to="/inbox">
             Open inbox
             <Icon name="chevron-right" />
-          </Button>
+          </AppButton>
         </div>
 
         <div className="mt-2 p-4 bg-primary-light pr-6 rounded-xl flex items-center justify-between">
@@ -121,14 +139,13 @@ function RouteComponent() {
               <Icon name="inbox" />
             </div>
 
-            <span className="text-4xl text-gray-hover-1 font-medium">24</span>
+            <span className="text-4xl text-gray-hover-1 font-medium">
+              {unreadMessages}
+            </span>
           </div>
 
           <div className="flex items-center -space-x-2">
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
+            {unreadLogosAvatars}
           </div>
         </div>
       </Card>
@@ -138,10 +155,10 @@ function RouteComponent() {
         <div className="flex items-center justify-between">
           <h5 className="font-semibold text-sm">May’s performance</h5>
 
-          <Button variant="link">
+          <AppButton variant="link">
             <span>Edit KPIs</span>
             <Icon name="pencil" />
-          </Button>
+          </AppButton>
         </div>
 
         <div className="mt-2.5 grid grid-cols-2 gap-2">{performanceCards}</div>
@@ -166,7 +183,7 @@ function RouteComponent() {
           </p>
         </div>
 
-        <div className="flex flex-col overflow-auto flex-1 divide-y divide-gray-5">
+        <div className="flex flex-col overflow-auto flex-1 divide-y divide-gray-5 scrollbar-gutter">
           {signalsCards}
         </div>
       </Card>

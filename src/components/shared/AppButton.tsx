@@ -13,7 +13,7 @@ interface ButtonProps {
   onClick?: () => void
 }
 
-export default function Button({
+export default function AppButton({
   to,
   color = 'primary',
   variant = 'filled',

@@ -10,7 +10,7 @@ export interface ButtonProps {
   className?: string
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const AppButton: React.FC<ButtonProps> = ({
   variant = 'primary',
   size = 'medium',
   children,

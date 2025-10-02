@@ -6,4 +6,5 @@ export interface DashboardSignal {
   sequenceActive?: boolean
   date: string
   type: SignalTypes
+  image: string
 }

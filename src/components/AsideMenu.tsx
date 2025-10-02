@@ -4,8 +4,11 @@ import cn from 'classnames'
 import { Link } from '@tanstack/react-router'
 import Badge from '@/components/shared/Badge'
 import Icon, { type IconsNames } from '@/components/shared/Icon'
-import Button from '@/components/shared/Button'
+import AppButton from '@/components/shared/AppButton'
 import Avatar from '@/components/shared/Avatar'
+import { dashboardInboxMock } from '@/mocks/dashboard-inbox'
+
+import pluralize from 'pluralize'
 
 interface AsideMenuItemConfig {
   icon: IconsNames
@@ -19,7 +22,7 @@ interface AsideMenuItemConfig {
 export default function AsideMenu() {
   const [isOpen, setIsOpen] = useState(true)
 
-  const unreadMessages = 24
+  const unreadMessages = dashboardInboxMock.length
 
   const menuItems: AsideMenuItemConfig[] = [
     {
@@ -89,12 +92,12 @@ export default function AsideMenu() {
       <div className="flex items-center justify-between pl-4 pr-2 py-6">
         {isOpen ? <Icon name="crono" /> : undefined}
 
-        <Button color="ghost" size="sm" icon onClick={handleToggleMenu}>
+        <AppButton color="ghost" size="sm" icon onClick={handleToggleMenu}>
           <Icon
             name="double-chevron-right"
             className={cn({ 'rotate-180': !isOpen })}
           />
-        </Button>
+        </AppButton>
       </div>
 
       <nav className="flex-1 overflow-hidden flex flex-col h-full mt-2">
@@ -126,13 +129,13 @@ export default function AsideMenu() {
           <div className="mt-4 px-2">
             <div className="p-2 bg-yellow-light rounded-lg bg-[url(@/assets/images/curves-pattern-bg.png)] bg-blend-color-burn bg-right bg-no-repeat">
               <p className="text-sm text-dark font-medium">
-                Trial ends in 2 days
+                Trial ends in {pluralize('day', 2, true)}
               </p>
 
-              <Button color="yellow" size="sm" className="mt-1.5">
+              <AppButton color="yellow" size="sm" className="mt-1.5">
                 Upgrade plan
                 <Icon name="gift" />
-              </Button>
+              </AppButton>
             </div>
           </div>
         ) : undefined}

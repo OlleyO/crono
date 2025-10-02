@@ -3,6 +3,7 @@ import { dashboardPerformancesHashedByType } from '@/constants/dashboard'
 import type { PerformanceTypes } from '@/entities/performance'
 
 import Icon from '@/components/shared/Icon'
+import Popover from '../shared/Popover'
 
 interface DashboardPerformanceMetricProps {
   count: number
@@ -27,7 +28,17 @@ export default function DashboardPerformanceMetric({
         </div>
 
         {uiConfig.infoTooltip ? (
-          <Icon name="info" className="text-gray-1" />
+          <Popover
+            trigger="hover"
+            placement="bottom"
+            content={
+              <div className="bg-dark text-xs text-white font-medium px-4 py-2 text-center max-w-[246px] rounded-sm">
+                {uiConfig.infoTooltip}
+              </div>
+            }
+          >
+            <Icon name="info" className="text-gray-1" />
+          </Popover>
         ) : undefined}
       </div>
 

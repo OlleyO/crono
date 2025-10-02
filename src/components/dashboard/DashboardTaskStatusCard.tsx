@@ -4,6 +4,7 @@ import type { TaskStatuses } from '@/entities/task'
 import { dashboardStatusesHashedByStatus } from '@/constants/dashboard'
 
 import Icon from '@/components/shared/Icon'
+import pluralize from 'pluralize'
 
 interface DashboardTaskStatusCardProps {
   count: number
@@ -27,7 +28,9 @@ export default function DashboardTaskStatusCard({
 
         {errors ? (
           <div className="relative flex items-center gap-1.5 bg-white text-hover-red px-2 py-1 rounded-2xl -top-2">
-            <span className="text-xs font-medium">{errors} error</span>
+            <span className="text-xs font-medium">
+              {pluralize('error', errors, true)}
+            </span>
 
             <Icon name="warning" />
           </div>

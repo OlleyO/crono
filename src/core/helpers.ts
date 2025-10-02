@@ -27,3 +27,32 @@ export const createHashedObject = <
     return acc
   }, {} as Record<T[Prop], ValueArray extends true ? T[] : T>)
 }
+
+export function prettifyNumber(value: number): string {
+  if (value < 10_000) return value.toString()
+
+  const suffixes = ["", "K", "M", "B", "T"]
+  let newValue = value
+  let suffixIndex = 0
+
+  while (newValue >= 1000 && suffixIndex < suffixes.length - 1) {
+    newValue /= 1000
+    suffixIndex++
+  }
+
+  const formatted =
+    newValue % 1 === 0 ? newValue.toFixed(0) : newValue.toFixed(1)
+
+  return `${formatted}${suffixes[suffixIndex]}`
+}
+
+export function prettifyDate(dateInput: string | Date): string {
+  const date = dateInput instanceof Date ? dateInput : new Date(dateInput)
+  if (isNaN(date.getTime())) return "" // invalid date
+
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  })
+}

@@ -6,3 +6,7 @@
   overflow: hidden;
   word-break: break-word;
 }
+
+.scrollbar-gutter {
+  scrollbar-gutter: stable;
+}
