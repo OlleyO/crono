@@ -14,10 +14,6 @@ export default defineConfig({
     tailwindcss(),
     svgrPlugin()
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-  },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),

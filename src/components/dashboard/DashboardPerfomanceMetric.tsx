@@ -4,6 +4,7 @@ import type { PerformanceTypes } from '@/entities/performance'
 
 import Icon from '@/components/shared/Icon'
 import Popover from '../shared/Popover'
+import { prettifyNumber } from '@/core/helpers'
 
 interface DashboardPerformanceMetricProps {
   count: number
@@ -48,10 +49,10 @@ export default function DashboardPerformanceMetric({
             <Icon name={uiConfig.icon} className="mr-1 size-4" />
           ) : undefined}
           {uiConfig.prefix ? uiConfig.prefix : undefined}
-          <div>{count}</div>
+          <div>{prettifyNumber(count)}</div>
         </div>
 
-        <div className="text-gray-2">&nbsp;/&nbsp;{total}</div>
+        <div className="text-gray-2">&nbsp;/&nbsp;{prettifyNumber(total)}</div>
       </div>
 
       <div

@@ -146,7 +146,7 @@ export default function AsideMenu() {
 
         {isOpen ? (
           <div className="text-sm">
-            <p className="font-medium text-dark">William Robertson</p>
+            <p className="text-dark">William Robertson</p>
             <p className="text-gray-1">Sales</p>
           </div>
         ) : undefined}

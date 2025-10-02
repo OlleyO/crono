@@ -4,6 +4,7 @@ import AppButton from '@/components/shared/AppButton'
 import Avatar from '@/components/shared/Avatar'
 import Popover from '@/components/shared/Popover'
 import Icon from '../shared/Icon'
+import { prettifyDate } from '@/core/helpers'
 
 interface DashboardSignalCardProps {
   id: string
@@ -69,7 +70,7 @@ export default function DashboardSignalCard({
       </div>
 
       <div className="flex items-center gap-4">
-        <span className="text-xs text-gray-1">{date}</span>
+        <span className="text-xs text-gray-1">{prettifyDate(date)}</span>
 
         <Popover content={popoverContent} placement="bottom">
           <AppButton>Action</AppButton>

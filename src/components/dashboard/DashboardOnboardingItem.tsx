@@ -8,7 +8,7 @@ export default function DashboardOnboardingItem({
   config,
 }: DashboardOnboardingItemProps) {
   return (
-    <div className="flex items-center pr-2 py-4">
+    <div className="flex items-center pr-2 py-4 first:pt-3 last:pb-0">
       <div className="size-10 mr-4">
         <img src={config.image} />
       </div>

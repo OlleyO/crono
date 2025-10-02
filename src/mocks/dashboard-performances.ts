@@ -25,8 +25,8 @@ export const dashboardPerformancesMock = [
     type: 'deals'
   },
   {
-    total: 100,
-    count: 50,
+    total: 100000,
+    count: 50000,
     type: 'pipeline'
   }
 ]
