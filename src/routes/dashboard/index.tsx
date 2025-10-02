@@ -15,6 +15,10 @@ import { isArray } from 'radash'
 import DashboardTaskStatusCard from '@/components/dashboard/DashboardTaskStatusCard'
 import { createHashedObject } from '@/core/helpers'
 import DashboardPerformanceMetric from '@/components/dashboard/DashboardPerfomanceMetric'
+import { dashboardSignalsMock } from '@/mocks/dashboard-signals'
+import DashboardSignalCard from '@/components/dashboard/DashboardSignalCard'
+import Button from '@/components/shared/Button'
+import Avatar from '@/components/shared/Avatar'
 
 export const Route = createFileRoute('/dashboard/')({
   component: RouteComponent,
@@ -74,8 +78,23 @@ function RouteComponent() {
     )
   })
 
+  const signalsCards = dashboardSignalsMock.map((i) => {
+    return (
+      <>
+        <div className="h-1 w-full border-b border-b-gray-4" />
+        <DashboardSignalCard
+          key={i.id}
+          date={i.date}
+          description={i.description}
+          sequenceActive={i.sequenceActive}
+          type={i.type}
+        />
+      </>
+    )
+  })
+
   return (
-    <div className="grid p-4 gap-2 grid-cols-3 grid-rows-[auto_auto_1fr_1fr]">
+    <div className="grid p-4 gap-2 grid-cols-3 grid-rows-[auto_auto_1fr_1fr] overflow-hidden h-full">
       {/* Welcome block */}
       <Card>
         <div className="px-2 py-4">
@@ -92,9 +111,10 @@ function RouteComponent() {
         <div className="flex items-center justify-between text-sm">
           <h5 className="font-semibold">Replies</h5>
 
-          <Link className="text-primary font-medium" to="/inbox">
+          <Button variant="link" to="/inbox">
             Open inbox
-          </Link>
+            <Icon name="chevron-right" />
+          </Button>
         </div>
 
         <div className="mt-2 p-4 bg-primary-light pr-6 rounded-xl flex items-center justify-between">
@@ -107,10 +127,10 @@ function RouteComponent() {
           </div>
 
           <div className="flex items-center -space-x-2">
-            <div className="size-8 bg-gray-4 rounded-full" />
-            <div className="size-8 bg-gray-4 rounded-full" />
-            <div className="size-8 bg-gray-4 rounded-full" />
-            <div className="size-8 bg-gray-4 rounded-full" />
+            <Avatar />
+            <Avatar />
+            <Avatar />
+            <Avatar />
           </div>
         </div>
       </Card>
@@ -120,10 +140,10 @@ function RouteComponent() {
         <div className="flex items-center justify-between">
           <h5 className="font-semibold text-sm">May’s performance</h5>
 
-          <button className="flex items-center gap-2 text-primary text-sm font-medium">
+          <Button variant="link">
             <span>Edit KPIs</span>
             <Icon name="pencil" />
-          </button>
+          </Button>
         </div>
 
         <div className="mt-2.5 grid grid-cols-2 gap-2">{performanceCards}</div>
@@ -139,7 +159,19 @@ function RouteComponent() {
       </Card>
 
       {/* Signals block */}
-      <Card className="row-span-2 col-span-2">1</Card>
+      <Card className="row-span-2 col-span-2 overflow-hidden h-full flex flex-col px-0">
+        <div className="px-4 pb-3">
+          <h5 className="font-semibold text-sm ">Signals</h5>
+          <p className="text-sm text-gray-1 mt-1">
+            Never miss a single opportunity: check out your top signals from
+            your 1st-degree LinkedIn connections.
+          </p>
+        </div>
+
+        <div className="flex flex-col overflow-auto flex-1 gap-4">
+          {signalsCards}
+        </div>
+      </Card>
 
       {/* Onboarding block */}
       <Card className="row-span-2">1</Card>

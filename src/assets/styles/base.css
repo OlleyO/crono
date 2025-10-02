@@ -51,3 +51,11 @@ button:not(:disabled) {
 button:disabled {
   cursor: not-allowed;
 }
+
+*::-webkit-scrollbar-track {
+  @apply bg-yellow;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-yellow;
+}

@@ -4,6 +4,8 @@ import cn from 'classnames'
 import { Link } from '@tanstack/react-router'
 import Badge from '@/components/shared/Badge'
 import Icon, { type IconsNames } from '@/components/shared/Icon'
+import Button from '@/components/shared/Button'
+import Avatar from '@/components/shared/Avatar'
 
 interface AsideMenuItemConfig {
   icon: IconsNames
@@ -87,12 +89,9 @@ export default function AsideMenu() {
       <div className="flex items-center justify-between pl-4 pr-2 py-6">
         {isOpen ? <Icon name="crono" /> : undefined}
 
-        <button
-          className="rounded-full flex items-center justify-center size-6 bg-gray-7"
-          onClick={handleToggleMenu}
-        >
+        <Button color="ghost" size="sm" icon onClick={handleToggleMenu}>
           <Icon name="double-chevron-right" />
-        </button>
+        </Button>
       </div>
 
       <nav className="flex-1 overflow-hidden flex flex-col h-full mt-2">
@@ -127,16 +126,17 @@ export default function AsideMenu() {
                 Trial ends in 2 days
               </p>
 
-              <button className="mt-1.5">Upgrade plan</button>
+              <Button color="yellow" size="sm" className="mt-1.5">
+                Upgrade plan
+                <Icon name="gift" />
+              </Button>
             </div>
           </div>
         ) : undefined}
       </nav>
 
       <div className="flex items-center gap-2 pl-4 pr-3 py-3 border-t border-t-gray-4">
-        <div className="size-8 rounded-full flex items-center justify-center bg-gray-5">
-          1
-        </div>
+        <Avatar />
 
         {isOpen ? (
           <div className="text-sm">

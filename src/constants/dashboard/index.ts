@@ -3,11 +3,7 @@ import type { PerformanceTypes } from "@/entities/performance"
 import type { TaskStatuses } from "@/entities/task"
 
 import { type IconsNames } from "@/components/shared/Icon"
-
-// import ContactIcon from '@/assets/images/icons/contact.svg?react'
-// import BriefcaseIcon from '@/assets/images/icons/briefcase.svg?react'
-// import TodoListIcon from '@/assets/images/icons/todo-list.svg?react'
-// import CameraIcon from '@/assets/images/icons/camera.svg?react'
+import type { SignalTypes } from "@/entities/signal"
 
 interface DashboardTaskStatusUiConfig {
   label: string
@@ -114,3 +110,23 @@ export const dashboardPerformances: DashboardPerformanceUiConfig[] = [
 ]
 
 export const dashboardPerformancesHashedByType = createHashedObject(dashboardPerformances, 'type')
+
+interface DashboardSignalsUiConfig {
+   label: string
+   color: string
+}
+
+export const dashboardSignalsUiConfig: Record<SignalTypes,DashboardSignalsUiConfig>  = {
+ role: {
+  label: 'Role change',
+  color: 'text-medium-purple'
+ },
+ company: {
+  label: 'Company change',
+  color: 'text-blue-green'
+ },
+ "website-view": {
+  label: 'Website view',
+  color: 'text-lavender-magenta'
+ }
+}

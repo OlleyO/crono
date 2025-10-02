@@ -15,6 +15,9 @@ import PencilIcon from '@/assets/images/icons/pencil.svg?react'
 import SearchIcon from '@/assets/images/icons/search.svg?react'
 import TodoListIcon from '@/assets/images/icons/todo-list.svg?react'
 import WarningIcon from '@/assets/images/icons/warning.svg?react'
+import GiftIcon from '@/assets/images/icons/gift.svg?react'
+import ChevronRightIcon from '@/assets/images/icons/chevron-right.svg?react'
+import LightningIcon from '@/assets/images/icons/lightning.svg?react'
 
 const icons = {
   'add-template': AddTemplateIcon,
@@ -34,6 +37,9 @@ const icons = {
   search: SearchIcon,
   'todo-list': TodoListIcon,
   warning: WarningIcon,
+  gift: GiftIcon,
+  'chevron-right': ChevronRightIcon,
+  lightning: LightningIcon,
 }
 
 export type IconsNames = keyof typeof icons
