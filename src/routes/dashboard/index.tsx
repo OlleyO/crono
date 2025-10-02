@@ -22,7 +22,7 @@ import AppButton from '@/components/shared/AppButton'
 import Avatar from '@/components/shared/Avatar'
 import DashboardOnboardingItem from '@/components/dashboard/DashboardOnboardingItem'
 import { dashboardInboxMock } from '@/mocks/dashboard-inbox'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 export const Route = createFileRoute('/dashboard/')({
   component: RouteComponent,
@@ -54,17 +54,23 @@ function RouteComponent() {
 
   const taskStatusCards = dashboardStatusesGroupedByStatus.flatMap((i) => {
     if (isArray(i)) {
-      return i.map((subI) => {
-        return (
-          <div key={subI.status} className="flex-1">
-            <DashboardTaskStatusCard
-              status={subI.status}
-              count={hashedTaskStatusesMock[subI.status].count}
-              errors={hashedTaskStatusesMock[subI.status].errors}
-            />
-          </div>
-        )
-      })
+      return (
+        <Fragment key={i.map((subI) => subI.status).join('-')}>
+          <div className="h-full w-[1px] bg-gray-5" />
+          {i.map((subI) => {
+            return (
+              <div key={subI.status} className="flex-1">
+                <DashboardTaskStatusCard
+                  status={subI.status}
+                  count={hashedTaskStatusesMock[subI.status].count}
+                  errors={hashedTaskStatusesMock[subI.status].errors}
+                />
+              </div>
+            )
+          })}
+          <div className="h-full w-[1px] bg-gray-5" />
+        </Fragment>
+      )
     }
 
     return (
