@@ -20,6 +20,7 @@ import ChevronRightIcon from '@/assets/images/icons/chevron-right.svg?react'
 import LightningIcon from '@/assets/images/icons/lightning.svg?react'
 import CheckmarkIcon from '@/assets/images/icons/checkmark.svg?react'
 import TrashBinIcon from '@/assets/images/icons/trash-bin.svg?react'
+import LogoIcon from '@/assets/images/icons/logo.svg?react'
 
 const icons = {
   'add-template': AddTemplateIcon,
@@ -44,6 +45,7 @@ const icons = {
   lightning: LightningIcon,
   checkmark: CheckmarkIcon,
   'trash-bin': TrashBinIcon,
+  logo: LogoIcon,
 }
 
 export type IconsNames = keyof typeof icons

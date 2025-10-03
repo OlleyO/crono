@@ -90,7 +90,7 @@ export default function AsideMenu() {
       )}
     >
       <div className="flex items-center justify-between pl-4 pr-2 py-6">
-        {isOpen ? <Icon name="crono" /> : undefined}
+        {isOpen ? <Icon name="logo" /> : undefined}
 
         <AppButton color="ghost" size="sm" icon onClick={handleToggleMenu}>
           <Icon
