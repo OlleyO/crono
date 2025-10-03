@@ -23,6 +23,7 @@ import Avatar from '@/components/shared/Avatar'
 import DashboardOnboardingItem from '@/components/dashboard/DashboardOnboardingItem'
 import { dashboardInboxMock } from '@/mocks/dashboard-inbox'
 import { Fragment, useState } from 'react'
+import Badge from '@/components/shared/Badge'
 
 export const Route = createFileRoute('/dashboard/')({
   component: RouteComponent,
@@ -182,7 +183,14 @@ function RouteComponent() {
       {/* Signals block */}
       <Card className="row-span-2 col-span-2 overflow-hidden h-full flex flex-col px-0">
         <div className="px-4 pb-3">
-          <h5 className="font-semibold text-sm ">Signals</h5>
+          <div className="flex items-center gap-1.5">
+            <h5 className="font-semibold text-sm ">Signals</h5>
+
+            {unreadSignals.length ? (
+              <Badge value={unreadSignals.length}></Badge>
+            ) : undefined}
+          </div>
+
           <p className="text-sm text-gray-1 mt-1">
             Never miss a single opportunity: check out your top signals from
             your 1st-degree LinkedIn connections.
